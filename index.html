@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>DOM day 1</title>
+</head>
+
+<body>
+    <header class="header">
+        <div class="dropdown" data-dropdown>
+            <button class="link" data-dropdown-button>Projects</button>
+            <div class="dropdown-menu">
+                <ul class="list">
+                    <li>WhatsApp Clone</li>
+                    <li>Myntra Clone</li>
+                    <li>Todo List App </li>
+                </ul>
+            </div>
+        </div>
+        <div class="dropdown" data-dropdown>
+            <button class="link" data-dropdown-button> Skills </button>
+            <div class="dropdown-menu">
+                <ul class="list">
+                    <li>JS</li>
+                    <li>HTML</li>
+                    <li>CSS</li>
+                    <li>React</li>
+                </ul>
+            </div>
+        </div>
+</body>
+<script>
+    document.addEventListener('click', (e) => {
+        const isDropdownButton = e.target.matches("[data-dropdown-button]")
+        if (!isDrowdownButton && e.target.closest('[data-dropdown') != null) return
+
+        let currentDropdown
+        if (isDropdownButton) {
+            currentDropdown = e.target.closest('[data-dropdown]')
+            currentDropdown.classList.toggle('active')
+        }
+        document.querySelectorAll('[data-dropdown].active').forEach(dropdown => {
+            if (dropdown === currentDropdown) return
+            dropdown.classList.remove('active')
+        })
+    })
+</script>
